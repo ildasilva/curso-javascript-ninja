@@ -15,7 +15,7 @@ As propriedades e tipos de valores para cada propriedade desse objeto devem ser:
 - `andando` - Boolean - recebe "falso" por padrão
 - `caminhouQuantosMetros` - Number - recebe "zero" por padrão
 
-var pessoa = {nome: 'Ilda', sobrenome: 'E. Ribeiro', sexo: 'Fem', idade: 23, altura: 1.68, peso: 49, andando: false, caminouQuantosMetros: 0}
+var pessoa = {nome: 'Ilda', sobrenome: 'E. Ribeiro', sexo: 'Fem', idade: 23, altura: 1.68, peso: 49, andando: false, caminhouQuantosMetros: 0}
 
 /*
 Adicione um método ao objeto `pessoa` chamado `fazerAniversario`. O método deve alterar o valor da propriedade `idade` dessa pessoa, somando `1` a cada vez que for chamado.
@@ -28,13 +28,13 @@ pessoa.fazerAniversario = function(){
 Adicione um método ao objeto `pessoa` chamado `andar`, que terá as seguintes
 características:
 - Esse método deve receber por parâmetro um valor que representará a quantidade de metros caminhados;
-- Ele deve alterar o valor da propriedade `caminhouQuantosMetros`, somando ao
-valor dessa propriedade a quantidade passada por parâmetro;
+- Ele deve alterar o valor da propriedade `caminhouQuantosMetros`, somando ao valor dessa propriedade a quantidade passada por parâmetro;
 - Ele deverá modificar o valor da propriedade `andando` para o valor
 booleano que representa "verdadeiro";
 */
-pessoa.andar = function(){
- pessoa.caminouQuantosMetros = x;
+var m;
+pessoa.andar = function(m){
+ pessoa.caminhouQuantosMetros += m;
  pessoa.andando = true;
 }
 /*
@@ -48,7 +48,7 @@ Crie um método chamado `nomeCompleto`, que retorne a frase:
 - "Olá! Meu nome é [NOME] [SOBRENOME]!"
 */
 pessoa.nomeCompleto = function() {
-  return 'Olá, meu nome é ' + pessoa.nome + ' ' + pessoa.sobrenome + '!'
+  return `Olá, meu nome é ${pessoa.nome} ${pessoa.sobrenome}!`
 }
 /*
 Crie um método chamado `mostrarIdade`, que retorne a frase:
@@ -108,14 +108,14 @@ pessoa.idade // 26
 Agora, faça a `pessoa` caminhar alguns metros, invocando o método `andar` 3x,
 com metragens diferentes passadas por parâmetro.
 */
-?
-
+pessoa.andar(6)
+pessoa.andar(10)
+pessoa.andar(4)
 /*
 A pessoa ainda está andando? (Use a instrução para responder e comentários
 inline ao lado da instrução para mostrar qual foi a resposta retornada)
 */
-?
-
+pessoa.andando // true
 /*
 Se a pessoa ainda está andando, faça-a parar.
 */
@@ -129,26 +129,35 @@ pessoa.andando //false
 Quantos metros a pessoa andou? (Use uma instrução para responder e comentários
 inline ao lado da instrução para mostrar a resposta retornada)
 */
-?
-
+pessoa.caminhouQuantosMetros // 20
 /*
 Agora vamos deixar a brincadeira um pouco mais divertida! :D
-Crie um método para o objeto `pessoa` chamado `apresentacao`. Esse método deve
-retornar a string:
+Crie um método para o objeto `pessoa` chamado `apresentacao`. Esse método deve retornar a string:
 - "Olá, eu sou o [NOME COMPLETO], tenho [IDADE] anos, [ALTURA], meu peso é [PESO] e, só hoje, eu já caminhei [CAMINHOU QUANTOS METROS] metros!"
 
 Só que, antes de retornar a string, você vai fazer algumas validações:
 - Se o `sexo` de `pessoa` for "Feminino", a frase acima, no início da
 apresentação, onde diz "eu sou o", deve mostrar "a" no lugar do "o";
-- Se a idade for `1`, a frase acima, na parte que fala da idade, vai mostrar a
-palavra "ano" ao invés de "anos", pois é singular;
+- Se a idade for `1`, a frase acima, na parte que fala da idade, vai mostrar a palavra "ano" ao invés de "anos", pois é singular;
 - Se a quantidade de metros caminhados for igual a `1`, então a palavra que
 deve conter no retorno da frase acima é "metro" no lugar de "metros".
 - Para cada validação, você irá declarar uma variável localmente (dentro do
 método), que será concatenada com a frase de retorno, mostrando a resposta
 correta, de acordo com os dados inseridos no objeto.
 */
-?
+pessoa.apresentacao = function(){
+ return `Olá, eu sou o ${pessoa.nomeCompleto()}, tenho ${pessoa.idade} anos, ${pessoa.altura}m de altura, meu peso é ${pessoa.peso}kg e, só hoje já caminhei ${pessoa.caminhouQuantosMetros} metros!`;
+ if(pessoa.sexo === 'Fem'){
+  var fem = a;
+  return `Olá, eu sou ${fem} ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} anos, ${pessoa.altura}m de altura, meu peso é ${pessoa.peso}kg e, só hoje já caminhei ${pessoa.caminhouQuantosMetros} metros!`;
+} if(pessoa.idade === 1){
+  var age = 'ano';
+  return `Olá, eu sou ${fem} ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${age}, ${pessoa.altura}m de altura, meu peso é ${pessoa.peso}kg e, só hoje já caminhei ${pessoa.caminhouQuantosMetros} metros!`;
+}if(pessoa.caminhouQuantosMetros === 1){
+  var metro = 'metro'
+  return `Olá, eu sou ${fem} ${pessoa.nome} ${pessoa.sobrenome}, tenho ${pessoa.idade} ${age}, ${pessoa.altura}m de altura, meu peso é ${pessoa.peso}kg e, só hoje já caminhei ${pessoa.caminhouQuantosMetros} ${metro}!`;
+}
+}
 
 // Agora, apresente-se ;)
 ?
