@@ -40,7 +40,7 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-var carro = {marca: 'chevrolet', modelo: 'onix', placa: 'XPT 0102', ano: 2019, cor: 'branco', quantasPortas: 5, assentos: 5, quantidadePesoas: 0}
+var carro = {marca: 'chevrolet', modelo: 'onix', placa: 'XPT 0102', ano: 2019, cor: 'branco', quantasPortas: 5, assentos: 5, quantidadePessoas: 0}
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
@@ -106,7 +106,7 @@ carro.addPessoa = function(p){
 			if(vaga > 1){
 				return `Só cabem mais ${vaga} pessoas.`
         	}else{
-				return `Só cabem mais ${vaga} pessoa.`
+				return `Só cabe mais ${vaga} pessoa.`
             }
         }
     }
@@ -120,19 +120,19 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-carro.cor // "branco"
+carro.obterCor // "branco"
 
 // Mude a cor do carro para vermelho.
-carro.cor = 'vermelho';
+carro.mudaCor('Vermelho')
 
 // E agora, qual a cor do carro?
-carro.cor // "vermelho"
+carro.obterCor // "Vermelho"
 
 // Mude a cor do carro para verde musgo.
-carro.cor = 'verde musgo'
+carro.mudaCor('Verde Musgo')
 
 // E agora, qual a cor do carro?
-carro.cor // "verde musgo"
+carro.obterCor // "Verde Musgo"
 
 // Qual a marca e modelo do carro?
 carro.obterMarcaModelo() // "Esse carro é um chevrolet onix"
@@ -142,19 +142,17 @@ carro.addPessoa(2)
 
 // Adicione mais 4 pessoas no carro.
 --carro.quantidadePessoas
-carro.addPessoa(4)
+carro.addPessoa(4) // "Temos 4 pessoas no carro"
 
 // Faça o carro encher.
-carro.addPessoa(3)
+carro.addPessoa(3) // "O carro está lotado."
 
 // Tire 4 pessoas do carro.
-carro.quantidadePessoas = 1
+carro.addPessoa(-4) // "Temos 1 pessoa no carro"
 
 // Adicione 10 pessoas no carro.
-carro.addPessoa(5)
-carro.quantidadePessoas = 0
-carro.addPessoa(5)
+carro.addPessoa(10) // "Só cabem mais 4 pessoas."
 
 // Quantas pessoas temos no carro?
-carro.quantidadePessoas // 5
+carro.quantidadePessoas // 1
 ```
