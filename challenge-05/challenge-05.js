@@ -12,7 +12,7 @@ Crie uma função que receba um array como parâmetro, e retorne esse array.
 /*
 Imprima o segundo índice do array retornado pela função criada acima.
 */
-funcao1(myarray)[2] // 12
+funcao1(myarray)[1] // 9
 /*
 Crie uma função que receba dois parâmetros: o primeiro, um array de valores; e o
 segundo, um número. A função deve retornar o valor de um índice do array que foi passado
@@ -30,7 +30,11 @@ var recebe = ['Curso', 09, true, null, NaN];
 Invoque a função criada acima, fazendo-a retornar todos os valores do último
 array criado.
 */
-funcao1(recebe) // ["Curso", 9, true, null, NaN]
+funcao2(recebe,0);
+funcao2(recebe,1);
+funcao2(recebe,2);
+funcao2(recebe,3);
+funcao2(recebe,4);
 /*
 Crie uma função chamada `book`, que recebe um parâmetro, que será o nome do
 livro. Dentro dessa função, declare uma variável que recebe um objeto com as
@@ -45,55 +49,60 @@ propriedades:
 - Se o parâmetro não for passado, a função deve retornar o objeto com todos
 os livros.
 */
- var book = function(a){
-	var obj = {
-		livro1: 'Alice no País das Maravilhas', 
-		livro2: 'Pai Rico Pai Pobre', 
-		livro3: 'Invista com Sabedoria'
+ var book = function(bookname){
+	var allbooks = {
+     'Alice no País das Maravilhas': { 
+      quantidadePaginas: 120,
+      autor: 'Lewis Carroll',
+      editora: 'MacMillan'
+      },
+      'Pai Rico Pai Pobre': {
+      quantidadePaginas: 85,
+      autor: 'Robert Kyiosaki',
+      editora: 'Editora EUA'
+      },
+      'Invista com Sabedoria:{
+      quantidadePaginas: 136,
+      autor: 'Leandro Ávila',
+      editora: 'Editora Brasil'
+      }
 		};
-	var livro1 = {
-	quantidadePaginas: 120,
-	autor: 'Lewis Carroll',
-	editora: 'MacMillan'
-	};
-	var livro2 = {
-	quantidadePaginas: 85,
-	autor: 'Robert Kyiosaki',
-	editora: 'Editora EUA'
-	};
-	var livro3 = {
-	quantidadePaginas: 136,
-	autor: 'Leandro Ávila',
-	editora: 'Editora Brasil'
-	};
-	if(a === 'Alice no País das Maravilhas' || a === "Alice no País das Maravilhas"){
-		return livro1;
-    } else if(a === 'Pai Rico Pai Pobre' || a === "Pai Rico Pai Pobre"){
-		return livro2;
-	} else if(a === 'Invista com Sabedoria' || a === "Invista com Sabedoria"){
-		return livro3;
-    }else{
-		return obj;
-    }
+	
+    return !bookname ? allboks : allboks[bookname];
 }
 /*
 Usando a função criada acima, imprima o objeto com todos os livros.
 */
- book() // {livro1: "Alice no País das Maravilhas", livro2: "Pai Rico Pai Pobre", livro3: "Invista com Sabedoria"}
+ book() // {
+     'Alice no País das Maravilhas': { 
+      quantidadePaginas: 120,
+      autor: 'Lewis Carroll',
+      editora: 'MacMillan'
+      },
+      'Pai Rico Pai Pobre': {
+      quantidadePaginas: 85,
+      autor: 'Robert Kyiosaki',
+      editora: 'Editora EUA'
+      },
+      'Invista com Sabedoria:{
+      quantidadePaginas: 136,
+      autor: 'Leandro Ávila',
+      editora: 'Editora Brasil'
+      }
 /*
 Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
 usando a frase:
 "O livro [NOME_DO_LIVRO] tem [X] páginas!"
 */
-"O livro " + book().livro1 + "tem " + book("Alice no País das Maravilhas").quantidadePaginas + " páginas" // "O livro Alice no País das Maravilhastem 120 páginas"
+"O livro " + book("Alice no País das Maravilhas") + "tem " + book("Alice no País das Maravilhas").quantidadePaginas + " páginas" // "O livro Alice no País das Maravilhastem 120 páginas"
 /*
 Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
 a frase:
 "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
 */
-'O autor do livro ' + book().livro2 + ' é ' + book('Pai Rico Pai Pobre').autor // "O autor do livro Pai Rico Pai Pobre é Robert Kyiosaki"
+'O autor do livro ' + book('Pai Rico Pai Pobre') + ' é ' + book('Pai Rico Pai Pobre').autor // "O autor do livro Pai Rico Pai Pobre é Robert Kyiosaki"
 /*
 Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
 a frase:
 "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
-*/'A editora do livro ' + book().livro3 + ' é ' + book('Invista com Sabedoria').editora // "A editora do livro Invista com Sabedoria é Editora Brasil"
+*/'A editora do livro ' + book('Invista com Sabedoria') + ' é ' + book('Invista com Sabedoria').editora // "A editora do livro Invista com Sabedoria é Editora Brasil"
