@@ -8,30 +8,30 @@ A função deverá retornar o array atualizado.
 */
 var addItem = function(item){
 	myarray.push(item);
-	return consolmyarray;
+	return myarray;
 }
 /*
 Adicione um novo array ao array criado no início do desafio, com ao menos 3
 itens de tipos diferentes, mostrando o resultado no console.
 */
-addItem([14, 'Ilda', false])
+console.log(addItem([14, 'Ilda', false]));
 /*
 Mostre no console o segundo elemento desse último array, criado acima, com a
 frase:
 "O segundo elemento do segundo array é [ELEMENTO]."
 */
-myarray.length // 6
-myarray[5][1] // "Ilda"
+console.log(myarray.length) // 6
+console.log(`O segundo elemento do segundo array é: myarray[5][1]`) // "Ilda"
 /*
 Mostre no console quantos itens tem o primeiro array criado, com a frase:
 "O primeiro array tem [QUANTIDADE DE ITENS] itens."
 */
-`O primeiro array tem ${myarray.length} itens` // "O primeiro array tem 6 itens"
+console.log(`O primeiro array tem ${myarray.length} itens`) // "O primeiro array tem 6 itens"
 /*
 Agora mostre no console quantos itens tem o segundo array criado, com a frase:
 "O segundo array tem [QUANTIDADE DE ITENS] itens."
 */
-`O segundo array tem ${myarray[5].length} itens.` // "O segundo array tem 3 itens."
+console.log(`O segundo array tem ${myarray[5].length} itens.`) // "O segundo array tem 3 itens."
 /*
 Utilizando a estrutura de repetição `while`, mostre no console todos os números
 pares entre 10 e 20, inclusive esses 2.
