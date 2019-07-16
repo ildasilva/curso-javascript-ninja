@@ -11,30 +11,32 @@ Invoque a função criada acima, passando dois números que serão somados, e mo
 o resultado no console, com a frase:
 "A soma de [VALOR 1] e [VALOR2] é igual a [RESULTADO]."
 */
-console.log(`A soma de 5 e 8 é igual a ${sum(5,8)}`) // A soma de 5 e 8 é igual a 13
+var value1 = 15;
+var value2 = 20;
+console.log(`A soma de ${value1} e ${value2} é igual a ${sum(value1, value2)}`) // A soma de 15 e 20 é igual a 35
 /*
 Mostre no console o nome da função criada acima, com a frase:
 "O nome da função que faz a soma é [NOME DA FUNÇÃO]."
 */
-sum.name // "calculateSum"
+console.log(`O nome da função que faz a soma é ${sum.name}`) // 'O nome da função que faz a soma é alculateSum'
 /*
 Crie uma função literal chamada `showName`. Essa função deve retornar o
 seu nome.
 */
-showName() // "showName"
+function showName(){
+	return 'Ilda Emanoely';
+}
 /*
 Declare uma variável chamada `varShowName` que recebe a função criada acima.
 */
-var showName = function showName(){
-	return showName.name;
-}
+var varshowName = showName;
 
 /*
 Usando a variável criada acima, mostre no console o nome e o retorno da função
 atribuída a ela, com a seguinte frase:
 "A função [NOME DA FUNÇÃO] retorna [RETORNO DA FUNÇÃO]."
 */
-`A função ${showName.name} retorna ${showName()}`; // "A função showName retorna showName"
+console.log(`A função ${varshowName.name} retorna ${varshowName()}`); // "A função varshowName retorna Ilda Emanoely"
 /*
 Crie uma função literal chamada `calculator`, que funcione assim:
 - A função deve receber um parâmetro que dirá qual operação matemática ela
@@ -50,7 +52,7 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
 function calculator(simb){
 	return function opr(a, b){
 		switch(simb){
-            case '+' :
+      case '+' :
 				return(`Resultado da operação: ${a} ${simb} ${b} = ${a+b}`);
 				break;
 			case '-' :
@@ -68,7 +70,7 @@ function calculator(simb){
 			default:
 				return "Operação Inválida";
         }
-    }
+    };
 }
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
@@ -92,7 +94,7 @@ var mode = calculator('%');
 Faça uma operação com cada uma das funções criadas acima, mostrando o resultado
 no console.
 */
-subtraction(9,5) // "Resultado da operação: 9 - 5 = 4"
-multiplication(8,5) // "Resultado da operação: 8 * 5 = 40"
-division(10,2) // "Resultado da operação: 10 / 2 = 5"
-mode(5,2) // "Resultado da operação: 5 % 2 = 1"
+console.log(subtraction(9,5)) // "Resultado da operação: 9 - 5 = 4"
+console.log(multiplication(8,5)) // "Resultado da operação: 8 * 5 = 40"
+console.log(division(10,2)) // "Resultado da operação: 10 / 2 = 5"
+console.log(mode(5,2)) // "Resultado da operação: 5 % 2 = 1"
