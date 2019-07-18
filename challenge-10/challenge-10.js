@@ -14,7 +14,7 @@ e faça a indentação correta.
   console.log( five + ' é número?', typeof five === 'number' );
 
   var concat = 10 + 10;
-  concat = String(1010);
+  concat = String(10) + 10;
   console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
   /*
@@ -42,7 +42,7 @@ e faça a indentação correta.
 	'%': function(num1, num2){
 			    return num1 % num2;
 		}
-}
+  }
   /*
   Crie uma função chamada `isOperatorValid`, que receberá um operador por
   parâmetro.
@@ -131,21 +131,68 @@ e faça a indentação correta.
   - O segundo, a função de soma, passando os dois operandos.
   - Se "sum" for "false", mostrar no console a mensagem de erro.
   */
-  console.log(`O resultado da operação é ${sum(6,3)}`); // O resultado da operação é 9
+  if(sum === true){
+    number1 = 10;
+    number2 = 12;
+    console.log(showOperationMessage(operationSignal, number1, number2), sum(number1, number2));
+  }else{
+	  console.log(showErrorMessage(operationSignal));
+  }
 
   /*
   Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
   divisão e resto. Crie variáveis com os nomes "subtraction",
   "multiplication", "division" e "mod".
   */
-  var subt = calculator('-')
-  var multi = calculator('*');
-  var divi = calculator('/');
-  var modd = calculator('%');
+  operationSignal = '-';
+  var subt = calculator(operationSignal);
+  if(subt === true){
+    number1 = 15;
+    number2 = 10;
+    console.log(showOperationMessage(operationSignal, number1, number2), subt(number1, number2));
+  }else{
+	  console.log(showErrorMessage(operationSignal));
+  }
+
+  
+
+  operationSignal = '*';
+  var multi = calculator(operationSignal);
+  if(multi === true){
+    number1 = 5;
+    number2 = 2;
+    console.log(showOperationMessage(operationSignal, number1, number2), multi(number1, number2));
+  }else{
+	  console.log(showErrorMessage(operationSignal));
+  }
+ 
+  
+  operationSignal = '/';
+  var divi = calculator(operationSignal);
+  if(divi === true){
+    number1 = 50;
+    number2 = 2;
+    console.log(showOperationMessage(operationSignal, number1, number2), divi(number1, number2));
+  }else{
+	  console.log(showErrorMessage(operationSignal));
+  }
+
+  
+  operationSignal = '%';
+  var modd = calculator(operationSignal);
+  if(modd === true){
+    number1 = 12;
+    number2 = 6;
+    console.log(showOperationMessage(operationSignal, number1, number2), modd(number1, number2));
+  }else{
+	  console.log(showErrorMessage(operationSignal));
+  }
+
+  
   /*
-  Repita o PASSO 2 novamente, mas passando erador inválido, para ver se
+  Repita o PASSO 2 novamente, mas passando operador inválido, para ver se
   a mensagem de erro será mostrada no console.
   */
-  subt = calculator('.'); // TypeError: subt is not a function
+  operationSignal = ','; // Operação "," não permitida!
     
 )();
