@@ -21,7 +21,7 @@
   var person = {
     name: 'Ilda Emanoely',
     age: 23,
-    weight: '1.68m',
+    weight: '49kg',
     birthday: '14/04/1996',
   };
   /*
@@ -33,10 +33,11 @@
   Após o loop, mostre a frase:
   'The person has [COUNTER] properties'
   */
+  var cont;
   for(var propri in person){
     console.log(`The ${propri} of person is ${person[propri]}`);
-    var qtd = (propri.length) / 2;
-  }console.log(`The person has ${qtd} properties`);
+    cont++;
+  }console.log(`The person has ${cont} properties`);
   /*
   Crie uma função chamada `moreThan`, que vai verificar se a pessoa (objeto
   criado acima) é mais velha que a idade passada por parâmetro.
@@ -57,10 +58,10 @@
   */
   var numbers = [];
   for(var cont = 0; cont <= 20; cont++){
-    numbers.push(cont);
     if(cont >= 10){
 		  break;
     }
+  numbers.push(cont);
   }console.log(`De 0 a 10: ${numbers}`); // De 0 a 10: 0,1,2,3,4,5,6,7,8,9,10
   /*
   Faça outro loop de 0 a 20, que adicione a um array chamado `numbers` (já
