@@ -1,4 +1,4 @@
-(functio(){
+(function(){
   /*
   Envolva todo o código desse desafio em uma IIFE.
   */
@@ -71,25 +71,27 @@
   Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
   chamada `newSudeste`.
   */
-  // ?
-
+  var newSudeste = [];
+  for(var cont = 11; cont >= 8; cont--){
+    console.log(brasil[cont]);
+    newSudeste.unshift(brasil.pop());
+  }
   /*
   Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
   ficar no mesmo nível que os estados já existentes, não em um array separado.
   */
-  // ?
-
+  brasil = brasil.concat(nordeste);
   /*
   Mostre no console os estados em `newSudeste`.
   */
   console.log( '\nEstados em newSudeste:' );
-  // ?
+  newSudeste;
 
   /*
   Mostre no console os estados do `brasil`.
   */
   console.log( '\nAlguns estados do Brasil:' );
-  // ?
+  brasil;
 
   /*
   usando forEach, percorra o array `brasil` e gere um novo array chamado
@@ -98,14 +100,16 @@
   - `id`: que será o índice do array `brasil`,
   - `estado`: que será o estado do array `brasil`.
   */
-  // ?
-
+  var newBrasil = [];
+  brasil.forEach(function(item, index){
+    newBrasil.push({id: index, estado: item});
+    console.log(newBrasil);
+  })
   /*
   Mostre o array `newBrasil` no console
   */
   console.log( '\nnewBrasil:' );
-  // ?
-
+  newBrasil;
   /*
   Percorra o array `brasil` e verifique se os estados tem mais de 7 letras cada,
   atribuindo o resultado à uma variável. Se tiver, mostre no console a frase:
@@ -114,7 +118,9 @@
   - "Nem todos os estados tem mais de 7 letras!"
   */
   console.log( '\nTodos os estados de `brasil` tem mais de 7 letras?' );
-  // ?
+  brasil.every(function(item, index){
+    item > 7 ? console.log("Sim, todos os estados tem mais de 7 letras!") : console.log("Nem todos os estados tem mais de 7 letras !")
+  })
 
   /*
   Percorra o array `brasil` e verifique se o Ceará está incluído, atribuindo o
@@ -124,9 +130,11 @@
   Senão, mostrar a frase:
   - "Ceará não foi incluído :("
   */
+  var yesCeara = brasil.some(function(item){
+    return item === 'Ceará'
+  })
   console.log( '\nCeará está incluído em `brasil`?' );
-  // ?
-
+  yesCeara ? console.log('Ceará está incluído!') : console.log('Ceará não foi incluído!')
   /*
   Percorra o array `newBrasil` e crie um novo array que some 1 no ID de cada
   objeto desse array, e adicione a frase abaixo na propriedade `estado`:
