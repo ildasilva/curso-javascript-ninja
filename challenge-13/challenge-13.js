@@ -45,37 +45,48 @@
   }).filter(function(item){
     return item === 'Santa Catarina' || item ==='Rio Grande do Sul' || item === 'Paraná'
   })
+  console.log(newSul);
+  
+  ou
+  
+  var newSul = brasil.slice(3,6);
+  console.log(newSul);
   /*
   Mostre no console os estados que estão em `newSul`.
   */
   console.log( '\nEstados do Sul do Brasil:' );
-  newSul;
+  console.log(newSul);
 
   /*
   Mostre no console todos os estados que estão em `brasil`.
   */
   console.log( '\nAlguns Estados do Brasil:' );
-  brasil;
+  console.log(brasil);
 
   /*
   Crie um novo array chamado `nordeste`, que tenha os estados do nordeste.
   */
-  var nordeste = ['Maranhão', 'Ceará', 'Piauí', 'Rio Grande do Norte', 'Paraíba', 'Pernambuco', 'Alagoas', 'Sergipe', 'Bahia'];
+  var nordeste = ['Maranhão',
+                  'Ceará',
+                  'Piauí',
+                  'Rio Grande do Norte',
+                  'Paraíba',
+                  'Pernambuco',
+                  'Alagoas',
+                  'Sergipe',
+                  'Bahia'];
   /*
   Mostre no console os estados do nordeste.
   */
   console.log( '\nEstados do Nordeste:' );
-  nordeste;
+  console.log(nordeste);
 
   /*
   Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
   chamada `newSudeste`.
   */
-  var newSudeste = [];
-  for(var cont = 11; cont >= 8; cont--){
-    console.log(brasil[cont]);
-    newSudeste.unshift(brasil.pop());
-  }
+  var newSudeste = brasil.splice(8,4);
+  console.log(newSudeste);
   /*
   Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
   ficar no mesmo nível que os estados já existentes, não em um array separado.
