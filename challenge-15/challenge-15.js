@@ -45,9 +45,7 @@
          this.age += arguments[0];
          return this;
       }
-
     }
-    var person = new Person('Ilda', 'Emanoely', 23);
   })();
 
   /*
