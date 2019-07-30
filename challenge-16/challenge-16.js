@@ -35,7 +35,14 @@
   console.log para cada formato.
   */
   console.log( '\nNome convertido à partir de um slug:' );
-  // ?
+  (function(){
+    'use strict';
+    var fullName = 'ilda-emanoely-ribeiro';
+    var newFullName = fullName.charAt(0).toUpperCase()
+    var nameUpper = newFullName + fullName.slice(1)
+    console.log(nameUpper);
+    console.log(nameUpper.split('-').join(' '));
+  })();
 
   /*
   - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -73,6 +80,19 @@
   Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
   */
   console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-  // ?
-  
+  var name = 'Catarina'
+  var arrayName = [];
+  for(var cont = 0; cont < name.length; cont++){
+    if(cont === 0){
+      arrayName[0] = name.charAt(0).toUpperCase();
+    }
+    if(cont % 2 === 0){
+      arrayName[cont] = name.charAt(cont).toUpperCase();
+    }else{
+      arrayName[cont] = name.charAt(cont);
+      }
+  }
+  // o toString transforma o array em string e logo depois troca as vírgulas por junção
+  console.log(arrayName.toString().split(',').join(''));	
+
 })();
