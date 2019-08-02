@@ -18,9 +18,9 @@
  (function(){
     'use strict';
     console.log( 'As letras do seu nome:' );
-      for(var cont=0, num = 1; cont < name.length ; num++, cont++){
+      for(var cont = 0, num = 1; cont < name.length ; num++, cont++){
         console.log(`${name.charAt(cont)} é a ${num}ª letra do meu nome`)	
-    }
+      }
   })();
   /*
   - Declare uma variável chamada `fullName`, que receba seu nome completo,
@@ -35,15 +35,14 @@
   console.log para cada formato.
   */
   console.log( '\nNome convertido à partir de um slug:' );
-  (function(){
-    'use strict';
-    var fullName = 'ilda-emanoely-ribeiro';
-    var newFullName = fullName.charAt(0).toUpperCase()
-    var nameUpper = newFullName + fullName.slice(1)
-    console.log(nameUpper);
-    console.log(nameUpper.split('-').join(' '));
-  })();
-
+  var name = 'catia-da-silva-souza';
+  // o slipt vai fazer com que sejam retirados os '-' e seja criado um array com cada nome em uma posição
+  // no map ele passará por todos os itens(nomes) e pegará sempre a primeira letra e colocará em caixa alta e concatena com o restante do nome
+  var fullName = name.split('-').map(function(name){
+    return name.charAt(0).toUpperCase() + name.slice(1)
+  });
+  // para exibir em um formato de string foi necessário tirar as vírgulas, colocar um espaço e transformar o array em string
+  console.log(fullName.join(' ').toString());
   /*
   - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
   cada nome por vírgula. Entre o penúltimo e o último nome, o separador deve
@@ -54,8 +53,19 @@
   5 nomes foi somente uma sugestão ;)
   */
   console.log( '\nMeus amigos:' );
-  // ?
-
+  (function(){
+    'use strict';
+    var names = ["maria", "josefa", "tigger", "allan", "joão", 'pedro', 'catarina'];
+    // com a variável menos será possível saber a penúltima posição do array
+    var menos = names.length - 2;
+    // o for abaixo faz com que seja criado um novo array com todas as strings até a penúltima posição
+    var newNomes = [];
+    for(var cont = 0; cont <= menos; cont++){
+      newNomes[cont] = names[cont];
+    }
+    // o novo array newNomes é transformado em string, concatemos então o 'e' e posteriormente a última posição do array nomes
+    console.log(`${newNomes.toString()} e ${names[names.length - 1]} são meus amigos`);
+   })();
   /*
   Usando o replace(), faça a string "Roberto" virar "Roberta".
   Mostre o resultado no console.
@@ -80,19 +90,16 @@
   Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
   */
   console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-  var name = 'Catarina'
+  var name = 'roberTO'
   var arrayName = [];
-  for(var cont = 0; cont < name.length; cont++){
-    if(cont === 0){
-      arrayName[0] = name.charAt(0).toUpperCase();
-    }
+  var nameLowerCase = name.toLowerCase();
+    for(var cont = 0; cont < name.length; cont++){
     if(cont % 2 === 0){
-      arrayName[cont] = name.charAt(cont).toUpperCase();
-    }else{
-      arrayName[cont] = name.charAt(cont);
-      }
-  }
-  // o toString transforma o array em string e logo depois troca as vírgulas por junção
-  console.log(arrayName.toString().split(',').join(''));	
-
+        arrayName[cont] = nameLowerCase.charAt(cont).toUpperCase();
+      }else{
+        arrayName[cont] = nameLowerCase.charAt(cont);
+        }
+    }
+    // o toString transforma o array em string e logo depois troca as vírgulas por junção
+    console.log(arrayName.toString().split(',').join(''));
 })();
