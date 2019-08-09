@@ -50,7 +50,15 @@
   ["junho", "julho"]
   */
   console.log( '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":' );
-  // ?
+  var tex = "Os meses de janeiro, junho e julho começam com a letra j."
+  function ReturnMonths(){
+    var junjul = tex.match(/ju\w+/g)
+    if(junjul !== [] !== []){
+      console.log(junjul);
+    }else{
+      return null;
+    }
+  }
 
   /*
   Crie uma expressão regular que faça o match com a abertura de uma tag
@@ -62,7 +70,8 @@
   ["<div>", "<section>", "<blockquote>"]
   */
   console.log( '\nMatch com a abertura de uma tag HTML:' );
-  // ?
+  var tags = "<div><section><blockquote>Texto <img /></blockquote></section></div>";
+  console.log(tags.match(/<\w+>/g));
 
   /*
   Crie uma expressão regular que faça o match com uma tag HTML vazia, casando
@@ -74,7 +83,8 @@
   ["<li></li>", "<li></li>", "<span></span>"]
   */
   console.log( '\nMatch com tags HTML vazias (abertura e fechamento da tag):' );
-  // ?
+  var tags = "<div><ul><li></li><li></li><li><span></span></li></ul></div>";
+  console.log(tags.match(/<\w+><\/\w+>/g));
 
   /*
   Vamos complicar um pouco agora :D
