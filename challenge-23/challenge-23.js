@@ -23,3 +23,51 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+
+(function (win, doc) {
+  'use strict'
+
+  let $visor = doc.querySelector('[data-js="visor"]');
+  let $buttonsNumbers = doc.querySelectorAll('[data-js="button-number"]');
+  let $buttonCE = doc.querySelector('[data-js="button-ce"]');
+  let $buttonOperations = doc.querySelectorAll('[data-js="button-operation"]')
+
+  // Passa por todos os itens e captura o click de todos os botões
+  Array.prototype.forEach.call($buttonsNumbers, function (button) {
+    button.addEventListener('click', handleClickNumber, false);
+  });
+
+  // Passa por todos os botões de operações captando os seus clicks
+  Array.prototype.forEach.call($buttonOperations, function (button) {
+    button.addEventListener('click', handleClickOperation, false);
+  })
+
+  // Click do botão CE que chama a função de ação do CE
+  $buttonCE.addEventListener('click', handleClickCE, false);
+
+  // Ação dos botões de números
+  function handleClickNumber() {
+    $visor.value += this.value;
+  }
+
+  // Ação do botão CE
+  function handleClickCE() {
+    $visor.value = 0;
+  }
+
+  // Ação dos botões de operadores
+  function handleClickOperation() {
+    let operations = ['+', '-', 'x', '÷'];
+    if (isLastItemAnOperation(operations))
+      // o slice aqui vai pegar os itens desde a posição 0 e vai remover o último item e concatenar
+      $visor.value = $visor.value.slice(0, -1);
+    $visor.value += this.value;
+  }
+
+  function isLastItemAnOperation() {
+
+  }
+
+  console.log($buttonsNumbers);
+
+})(window, document);
