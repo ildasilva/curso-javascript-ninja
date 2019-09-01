@@ -25,3 +25,111 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+
+(function (win, doc) {
+  'use strict';
+
+  let $inputCEP = doc.querySelector('[data-js="input-cep"]');
+  let $buttonSubmit = doc.querySelector('[data-js="button"]');
+  let ajax = new XMLHttpRequest();
+  let cep;
+  let $logradouro = doc.querySelector('[data-js="input-logradouro"]');
+  let $bairro = doc.querySelector('[data-js="input-bairro"]');
+  let $estado = doc.querySelector('[data-js="input-estado"]');
+  let $cidade = doc.querySelector('[data-js="input-cidade"]');
+  let $CEP = doc.querySelector('[data-js="input-cep-usuario"]');
+  let obj;
+
+  $buttonSubmit.addEventListener('click', submition, 'false');
+
+  function submition() {
+    onlyNumberCep();
+    getCEP();
+    $CEP.setAttribute('value', cep);
+    $inputCEP.value = "";
+  };
+
+  function onlyNumberCep() {
+    cep = $inputCEP.value.toString();
+    cep = cep.match(/(\d)+/g).join('');
+    return cep;
+  };
+
+  function getCEP() {
+    ajax.open('GET', 'http://apps.widenet.com.br/busca-cep/api/cep/' + onlyNumberCep() + '.json', true);
+    ajax.send(null);
+
+    ajax.addEventListener('readystatechange', function () {
+      if (requestOK()) {
+        let data = JSON.parse(ajax.responseText);
+        obj = {
+          logradouro: data.address,
+          bairro: data.district,
+          estado: data.state,
+          cidade: data.city
+        };
+        $estado.setAttribute('value', obj.estado);
+        $logradouro.setAttribute('value', obj.logradouro);
+        $bairro.setAttribute('value', obj.bairro);
+        $cidade.setAttribute('value', obj.cidade);
+      }
+    }, false);
+
+
+    function requestOK() {
+      return ajax.readyState === 4 && ajax.status === 200;
+    }
+  };
+
+})(window, document);
+
+
+
+//HTML
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM</title>
+</head>
+
+<body>
+  <div data-js="div-cep">
+    <input type="text" data-js="input-cep" placeholder="digite seu CEP" value="">
+    <button data-js="button">Submit</button>
+  </div>
+
+  <div data-js="div-log" style="margin: 15px 0;">
+    <label data-js="label-logradouro">Logradouro</label>
+    <input type="text" data-js="input-logradouro" readonly value="">
+  </div>
+
+  <div data-js="div-bairro" style="margin: 15px 0;">
+    <label data-js="label-bairro">Bairro</label>
+    <input type="text" data-js="input-bairro" readonly value="">
+  </div>
+
+  <div data-js="div-estado" style="margin: 15px 0; padding: 10px 0;">
+    <label data-js="label-estado">Estado</label>
+    <input type="text" data-js="input-estado" readonly value="">
+  </div>
+
+  <div data-js="div-cidade" style="margin: 15px 0;">
+    <label data-js="label-cidade">Cidade</label>
+    <input type="text" data-js="input-cidade" readonly value="">
+  </div>
+
+  <div data-js="div-cep" style="margin: 15px 0; padding: 10px 15px;">
+    <label data-js="label-cep">CEP</label>
+    <input type="text" data-js="input-cep-usuario" readonly value="">
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
