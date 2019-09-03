@@ -39,12 +39,17 @@
   let $cidade = doc.querySelector('[data-js="input-cidade"]');
   let $CEP = doc.querySelector('[data-js="input-cep-usuario"]');
   let obj;
+  let data;
 
   $buttonSubmit.addEventListener('click', submition, 'false');
 
   function submition() {
     onlyNumberCep();
-    getCEP();
+    ajax.open('GET', 'http://apps.widenet.com.br/busca-cep/api/cep/' + onlyNumberCep() + '.json');
+    ajax.send();
+
+    ajax.addEventListener('readystatechange', handleStateChange, false);
+
     $CEP.setAttribute('value', cep);
     $inputCEP.value = "";
   };
@@ -55,34 +60,31 @@
     return cep;
   };
 
-  function getCEP() {
-    ajax.open('GET', 'http://apps.widenet.com.br/busca-cep/api/cep/' + onlyNumberCep() + '.json', true);
-    ajax.send(null);
-
-    ajax.addEventListener('readystatechange', function () {
-      if (requestOK()) {
-        let data = JSON.parse(ajax.responseText);
-        obj = {
-          logradouro: data.address,
-          bairro: data.district,
-          estado: data.state,
-          cidade: data.city
-        };
-        $estado.setAttribute('value', obj.estado);
-        $logradouro.setAttribute('value', obj.logradouro);
-        $bairro.setAttribute('value', obj.bairro);
-        $cidade.setAttribute('value', obj.cidade);
-      }
-    }, false);
-
+  function handleStateChange() {
+    if (requestOK()) {
+      data = JSON.parse(ajax.responseText);
+      getDataCEP();
+    };
 
     function requestOK() {
       return ajax.readyState === 4 && ajax.status === 200;
+    };
+
+    function getDataCEP() {
+      obj = {
+        logradouro: data.address,
+        bairro: data.district,
+        estado: data.state,
+        cidade: data.city
+      };
+      $estado.setAttribute('value', obj.estado);
+      $logradouro.setAttribute('value', obj.logradouro);
+      $bairro.setAttribute('value', obj.bairro);
+      $cidade.setAttribute('value', obj.cidade);
     }
   };
 
 })(window, document);
-
 
 
 //HTML
