@@ -1,4 +1,4 @@
-  /*
+/*
   No HTML:
   - Crie um formulário com um input de texto que receberá um CEP e um botão
   de submit;
@@ -25,3 +25,43 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+
+(function (win, doc) {
+  "use strict";
+
+  let $inputCEP = doc.querySelector('[data-js="input-cep"]');
+  let $buttonSubmit = doc.querySelector('[data-js="button"]');
+  let cep;
+  let $logradouro = doc.querySelector('[data-js="input-logradouro"]');
+  let $bairro = doc.querySelector('[data-js="input-bairro"]');
+  let $estado = doc.querySelector('[data-js="input-estado"]');
+  let $cidade = doc.querySelector('[data-js="input-cidade"]');
+  let $CEP = doc.querySelector('[data-js="input-cep-usuario"]');
+  let data;
+
+  $buttonSubmit.addEventListener("click", submition, "false");
+
+  function onlyNumberCep() {
+    cep = $inputCEP.value.toString();
+
+    return cep;
+  }
+
+  async function submition() {
+    const response = await fetch(
+      `https://viacep.com.br/ws/${onlyNumberCep()}/json/`
+    );
+
+    data = await response.json();
+
+    $CEP.setAttribute("value", data.cep);
+    $inputCEP.value = "";
+
+    if (data) {
+      $estado.setAttribute("value", data.uf);
+      $logradouro.setAttribute("value", data.logradouro);
+      $bairro.setAttribute("value", data.bairro);
+      $cidade.setAttribute("value", data.localidade);
+    }
+  }
+})(window, document);
